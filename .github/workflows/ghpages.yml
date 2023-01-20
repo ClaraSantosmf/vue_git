@@ -3,15 +3,17 @@ on:
   push:
     branches:
       - main
-permissions:
-  contents: write
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
           node-version: 19
-      - run: npm i @vue/cli-service
-      - run: bash deploy.sh
+      - run: npm ci
+      - run: npm run build
+      - uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: dist
