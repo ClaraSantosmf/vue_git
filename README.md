@@ -45,3 +45,11 @@ module.exports = defineConfig({
   publicPath: "./",
 });
 ```
+
+### Deploy automático
+
+Para fazer um deploy automático inseri um arquivo sh ```deploy.sh``` que pode ser rodado pelo terminal. Ele vai levar as alterações para o github pages. 
+
+Para não ser necessário que seja feito isso na mão, melhor usar o arquivo yaml que aciona o Github Actions. 
+
+Esse arquivo deve estar dentro do .github/worflows no seu repositório.
