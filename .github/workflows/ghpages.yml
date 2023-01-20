@@ -1,5 +1,9 @@
-name: Publicar no ghpages
+# exemplo de como dar deploy no github pages usando github actions
+# esse arquivo vai dentro do seu repositorio em .github/workflows/blabla.yml
+# Creditos: Caio Peternela, aluno do buser tech (chupinhei daqui)
+# https://github.com/caiopeternela/pylifeandvuelife/blob/dev/.github/workflows/ci.yml
 
+name: publica no ghpages
 on:
   push:
     branches:
