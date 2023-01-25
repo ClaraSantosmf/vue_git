@@ -42,16 +42,17 @@ import {api} from "~api"
     methods: {
         async listandoHome() {
             const files = await api.search_file(this.repo.full_name)
-            this.organizador(files)
+            this.items = this.organizador(files)
         },
         organizador(files){
           for(let i=0; i < files.length; i++) {
             let ext = this.extensao(files[i].name)
             files[i]['ext']= ext
-            let children = this.abrido(files[i])
-            files[i]['children'] = children
+            if (files[i].type =='dir'){
+              files[i].children = []
+            }
           }
-          return this.items = files
+          return files
         },
         extensao(name){
            let iconextensao = name.includes('.')? name.split('.').pop(): ""
@@ -64,7 +65,7 @@ import {api} from "~api"
         abrido(item){
           if (item.type == 'dir'){
             api.search_file(this.repo.full_name, item.path).then(resposta =>{
-              item.children = resposta
+              item.children = this.organizador(resposta)
             } )
           }
           return
