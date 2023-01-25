@@ -32,7 +32,7 @@
 
 <script>
 import { debouncerdecorator } from "@/helpers/debouncer.js";
-import { api } from "@/api/api.js";
+import { api } from "~api";
 
 export default {
   data: () => ({
@@ -51,9 +51,8 @@ export default {
       this.userloading = false;
     }, 500),
     async listaRepositorios() {
-      const data = await api.search_repo(this.user)
+      const data = await api.lista_repos(this.user)
       this.repolist = data
-      debugger
     },
   },
   watch: {
@@ -61,8 +60,13 @@ export default {
       this.procuraUsuarioGH();
     },
     user() {
-      this.listaRepositorios();
+        if(this.user){
+           this.listaRepositorios(); 
+        }
     },
+    repo(){
+        this.$emit('reposelected', this.repo)
+    }
   },
 };
 </script>

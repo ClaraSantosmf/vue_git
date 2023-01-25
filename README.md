@@ -11,9 +11,15 @@ E detalhes que passaram a fazer sentido.
 npm install
 ```
 ### Compiles and hot-reloads for development
+Sem mock -> 
 ```
 npm run serve
 ```
+Com mock -> 
+```
+API_MOCK = 1  npm run serve
+```
+
 ### Compiles and minifies for production
 ```
 npm run build
@@ -93,13 +99,19 @@ Acredita que ele NÃO participa dos methodos? apenas do export default.
 
 * Foi utilizado o 'users?q=' que procura usuários com prefixo utilizado, isso ajuda no autocomplete. Para fazer a chamada ajax.
 
-* MEU DEUS, tu sabia que o await é uma outra forma de escrever o .then . Então, o await manda esperar pela resolução da promessa e atribui a resposta a uma variável. Devido ao fato dela não retornar na mesma hora, por estar esperando o await, a função externa deve conter um async. 
+* MEU DEUS, tu sabia que o await é uma outra forma de escrever o .then . Então, o await manda esperar pela resolução da promessa e atribui a resposta a uma variável. Devido ao fato dela não retornar na mesma hora, por estar esperando o await, a função externa deve conter um async. Async que der, eu falo. 
 
 ``` async function promess(){
   const variavel = await fetch (url)
  }```
 
 Para tratar casos de 'se der ruim', a ideia é dar um **try&catch**
+
+* Foi necessário uma api_mock com os objetos que deveriam ser retornados, por conta do ratelimit. Por uma questão de coerência, os parâmetros foram mantidos e precisamos desativar a regra do eslint para que as variáveis que não foram usadas não impeçam de subir o projeto. Então o 'no-unused-vars': 'off' no .eslintrc.js. 
+
+* Necessário ativar a variável de ambiente com API_MOCK=1 npm run serve.
+
+* A configuração da mock fica configurada no vue.config.js, onde existe um configurewebpack que constroi o path segundo a variável de ambiente que é passada.
 
 ## Dicionário 
 
