@@ -9,9 +9,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="issue in issues" :key="issue.id">
+        <tr v-for="issue in issues" :key="issue.number">
           <td>{{ issue.number }}</td>
-          <td>{{ issue.id }}</td>
           <td>{{ issue.title }}</td>
         </tr>
       </tbody>
@@ -34,7 +33,7 @@ export default {
   methods: {
     async listandoIssues() {
         this.loading = true
-        const maisissues = await api.listaIssues(this.repo.owner.login, this.repo.name, this.currentPage)
+        let maisissues = await api.listaIssues(this.repo.owner.login, this.repo.name, this.currentPage)
         this.issues = this.issues.concat(maisissues)
         this.currentPage++
         this.loading = false

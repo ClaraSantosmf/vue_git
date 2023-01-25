@@ -121,3 +121,8 @@ Para esse caso foi escrito no methods uma função que agenda a execução do c�
 * [helpers](https://medium.com/js-dojo/registering-globally-your-helpers-in-a-vue-app-b7ba3b9596b3) - Pasta que organiza funções utilizadas por um tópico específico, porém, compartilhada por mais de um componente. Por isso o arquivo js carrega o nome do tema em específico. Existe várias maneiras de exportar esses arquivos para uso. Mas o detalhe importante que o caminho relativo pode ser precedido de @, ao invés de ..
 
 * [Apply(), this(), bind()](https://imasters.com.br/javascript/descomplicando-call-apply-e-bind-em-javascript)
+
+
+# bugs
+
+* Tem um problema nas issues. 

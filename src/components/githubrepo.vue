@@ -39,6 +39,7 @@ export default {
     user: null,
     userlist: [],
     userloading: false,
+    repoloading: false,
     usersearch: null,
     repo: null,
     repolist: [],
@@ -51,8 +52,10 @@ export default {
       this.userloading = false;
     }, 500),
     async listaRepositorios() {
+      this.repoloading = true
       const data = await api.lista_repos(this.user)
       this.repolist = data
+      this,this.repoloading = false
     },
   },
   watch: {
@@ -66,6 +69,7 @@ export default {
     },
     repo(){
         this.$emit('reposelected', this.repo)
+        this.$emit('ownerselected', this.user)
     }
   },
 };

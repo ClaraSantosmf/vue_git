@@ -31,4 +31,9 @@ export const api = {
     const response = await fetch(url);
     return await response.json();
   },
+  async search_file(fullName, path=''){
+    const url = `https://api.github.com/repos/${fullName}/contents/${path}`
+    const response = await fetch(url)
+    return await response.json();
+  }
 };
