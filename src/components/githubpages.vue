@@ -1,22 +1,34 @@
 <template>
-  <v-treeview
-    v-model="tree"
-    :load-children="criandoFilhos"
-    :items="items"
-    activatable
-    item-key="name"
-    open-on-click
-    :open.sync="open"
-  >
-    <template v-slot:prepend="{ item, open }">
-      <v-icon v-if="item.type == 'dir'">
-        {{ open ? "mdi-folder-open" : "mdi-folder" }}
-      </v-icon>
-      <v-icon v-else>
-        {{ files[item.ext] }}
-      </v-icon>
-    </template>
-  </v-treeview>
+  <div>
+    <v-treeview
+      v-model="tree"
+      :load-children="criandoFilhos"
+      :items="items"
+      activatable
+      item-key="name"
+      open-on-click
+      :open.sync="open"
+    >
+      <template v-slot:prepend="{ item, open }">
+        <v-icon v-if="item.type == 'dir'">
+          {{ open ? "mdi-folder-open" : "mdi-folder" }}
+        </v-icon>
+        <v-icon v-else>
+          {{ files[item.ext] }}
+        </v-icon>
+      </template>
+      <template v-slot:label="{ item }">
+        <div @click="marcelinho(item)">
+          {{ item.name }}
+        </div>
+      </template>
+    </v-treeview>
+    <v-dialog v-model="dialog" width="600px">
+      <pre style="background-color: #FFF">
+        {{ conteudoDoArquivo }}
+      </pre>
+    </v-dialog>
+  </div>
 </template>
 
 <script>
@@ -24,6 +36,8 @@ import { api } from "~api";
 export default {
   props: ["repo"],
   data: () => ({
+    dialog: false,
+    conteudoDoArquivo: null,
     open: [],
     files: {
       html: "mdi-language-html5",
@@ -43,15 +57,14 @@ export default {
     async listandoHome() {
       const files = await api.search_file(this.repo.full_name);
       this.items = this.organizador(files);
-      debugger
     },
-    organizador(files) { 
+    organizador(files) {
       return files.map((file) => {
         file.ext = this.extensao(file.name);
         if (file.type == "dir") {
           file.children = [];
         }
-        return file
+        return file;
       });
     },
     extensao(name) {
@@ -69,6 +82,10 @@ export default {
         });
       }
       return;
+    },
+    async marcelinho(item){
+      this.conteudoDoArquivo = await api.conteudoMarcelinho(item.download_url)
+      this.dialog = true
     },
   },
   watch: {

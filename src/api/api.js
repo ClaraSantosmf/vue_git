@@ -35,5 +35,9 @@ export const api = {
     const url = `https://api.github.com/repos/${fullName}/contents/${path}`
     const response = await fetch(url)
     return await response.json();
+  },
+  async conteudoMarcelinho(url){
+    const response = await fetch(url)
+    return await response.text()
   }
 };

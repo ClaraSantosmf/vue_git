@@ -12,14 +12,6 @@
           size="32"
         ></v-avatar>
 
-        <!-- <v-btn
-          v-for="link in links"
-          :key="link"
-          text
-        >
-          {{ link }}
-        </v-btn> -->
-
         <v-spacer></v-spacer>
 
         <v-responsive max-width="260">
