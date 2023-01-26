@@ -1,58 +1,48 @@
-# vue_git
+# MiniApp GitHub & VueJs
 
-Esse README.md será um resumo das aulas do Tony Lampada. 
-A seguir algumas instruções de setup.
+Esse README.md também possui um resumo das aulas do miniapp do [Tony Lampada](https://www.youtube.com/watch?v=b9MVZvCnw2M&list=PLgMNBa0XaIge0Hglaekl0gY_RsgLvqOu_). Então é bem longo, mas você pode ficar apenas com o setup.
 
-Existem algumas anotações em tópicos do que eu não sabia e agora eu sei. Do que  sabia que havia esquecido. Logo, preciso anotar novamente para relembrar. 
-E detalhes que passaram a fazer sentido. 
+Existem anotações em tópicos sobre o que eu não sabia, o que sabia e havia esquecido, e coisas que eu sabia, mas passaram a fazer sentido agora. 
 
-### Como rodar o projeto.
+
+# Como rodar o projeto:
 ## 1º Project setup
-Na pasta do projeto, rode o seguinte comando primeiro para instalar nossas dependências.
+Na pasta do projeto, rode o seguinte comando para instalar nossas dependências.
 ```
 npm install
 ```
-### Como rodar o projeto.
-Se você precisar rodar sem mock o comando a seguir serve.
+## 2º Como rodar o projeto.
+Se você precisar rodar sem mock, o comando a seguir serve.
 Sem mock -> 
 ```
 npm run serve
 ```
-Com mock você deve setar a variável de ambiente. 
+Com mock, você deve setar a variável de ambiente. 
 ```
 API_MOCK = 1  npm run serve
 ```
 
-### MVP
+### Conheça o MVP
 
 [Link do deploy](https://clarasantosmf.github.io/vue_git/)
 
 ![alter text](https://raw.githubusercontent.com/ClaraSantosmf/vue_git/main/src/img/mvp.png)
 
-### Compiles and minifies for production
+### Compiles and minifies for production para deploy
 ```
 npm run build
 ```
-Cria arquivos estáticos para deploy com arquivos html, css, js. dentro de uma pasta dist. Isso porquê não dá para rodar o ``` npm run serve ``` na página. Que por default o ignore não permite subir. 
-Dá para testar seus arquivos estáticos se você entrar no seu dist e tentar subir com ```npx serve```. Isso vai subir um serviço web na pasta atual.
+Esse comando cria arquivos estáticos para deploy com o html, css, js. dentro de uma pasta dist. Necessário porque não dá para rodar o ``` npm run serve ``` na página. 
+Por default o .gitignore não permite subir. 
+Dá para testar os arquivos estáticos se você entrar no seu dist e tentar subir com ```npx serve```. Isso vai subir um serviço web na pasta atual.
 Então no github da o deploy na branch ghpages.
 
-### Lints and fixes files
-```
-npm run lint
-```
+### Como servi os arquivos do dist que estão em subpastas. 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-
-### Eslint
-
-Esse embelezador de código vai chorar por muitas coisas. A forma de configurar o comportamento do eslint é por meio do .eslintrc.js. Nesse aquivos vamos desligar o problema com debbuguer e a necessidade de ome compost. 
-
-### Como servi os seus arquivos do dist que estão em sua subpastas. 
-
-O publicpath inserido no vue.config.js permite publicar a mini path qualquer do servidor, ou seja, aqueles os arquivos que não estão na raiz do projeto podem ser publicados.
+O publicpath inserido no vue.config.js permite publicar a mini path qualquer para um servidor, ou seja, arquivos que não estão na raiz do projeto podem ser publicados para servi em uma página estática.
 Então o conteúdo da pasta dist funciona com o publicPath. 
+
+Essas são as instruções que devem ser inseridas no vue.config.js
 
 ```
 const { defineConfig } = require('@vue/cli-service')
@@ -64,13 +54,26 @@ module.exports = defineConfig({
 
 ### Deploy automático
 
-Para fazer um deploy automático inseri um arquivo sh ```deploy.sh``` que pode ser rodado pelo terminal. Porém, ainda estou melhorando ele. Ele vai levar as alterações para o github pages. roda um ``` bash deploy.sh```. 
+Para fazer um deploy automático, eu inseri um arquivo sh ```deploy.sh``` que deve ser rodado pelo terminal. Porém, ainda estou melhorando ele. Ele vai levar as alterações para o github pages. 
+O comando para dar play é ``` bash deploy.sh```
 
 Para não ser necessário que seja feito isso na mão, melhor usar o arquivo yaml que aciona o Github Actions. 
 
 Esse arquivo deve estar dentro do .github/worflows no seu repositório.
 
 Lá tem o bizu que, automaticamente, na hora que vc der push na main, ele fará o deploy do arquivo estático. 
+
+### Lints and fixes files
+```
+npm run lint
+```
+
+### Customize configuration
+See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Eslint
+
+Esse embelezador de código vai chorar por muitas coisas. A forma de configurar o comportamento do eslint escrevendo um .eslintrc.js. Nesse aquivos vamos desligar o problema com debbuguer, a necessidade de nome composto e variáveis que não estão sendo usadas. 
 
 ### Data
 
@@ -92,17 +95,17 @@ Também é possível usar como parâmetro da diretativa v-bind uma expressão JS
 
 ### Watch 
 
-Serve para acionar efeitos colaterais, alterar outra parte do estado com base no resultado de uma operação assíncrona. O retorno de chamada só será acionado quando a propriedade observada receber um novo valor - ele não será acionado em alterações de propriedade aninhada. Por isso é chamado de raso. 
-Acredita que ele NÃO participa dos methodos? apenas do export default.
+Serve para acionar efeitos colaterais devido a alteração de outra parte do estado com base no resultado de uma operação assíncrona. O retorno de chamada só será acionado quando a propriedade observada receber um novo valor.
+Porém, ele não será acionado em alterações de propriedade aninhada, porque ele é raso. 
+Acredita que ele NÃO participa dos methods? apenas do export default.
 
- 
 ### vuetify. 
 
 * Por algum motivo, o componente que possui um v-autocomplete espera na page que exista o componente seja envolvido em um tag <app>
 
 ### JavaScript 
 
-* Decorator
+* Decorator - é necessário estudar. 
 
 ### API GitHub
 
@@ -110,17 +113,21 @@ Acredita que ele NÃO participa dos methodos? apenas do export default.
 
 * MEU DEUS, tu sabia que o await é uma outra forma de escrever o .then . Então, o await manda esperar pela resolução da promessa e atribui a resposta a uma variável. Devido ao fato dela não retornar na mesma hora, por estar esperando o await, a função externa deve conter um async. Async que der, eu falo. 
 
-``` async function promess(){
+```
+ async function promess(){
   const variavel = await fetch (url)
- }```
+ }
+  ```
 
 Para tratar casos de 'se der ruim', a ideia é dar um **try&catch**
+
+* Algumas vezes eu acabai recebendo apenas promessas, e não os objetos quais eu precisava trabalhar. Acabei substituindo a o async e await pelo then novamente. Preciso aprofundar em como isso funciona.
 
 * Foi necessário uma api_mock com os objetos que deveriam ser retornados, por conta do ratelimit. Por uma questão de coerência, os parâmetros foram mantidos e precisamos desativar a regra do eslint para que as variáveis que não foram usadas não impeçam de subir o projeto. Então o 'no-unused-vars': 'off' no .eslintrc.js. 
 
 * Necessário ativar a variável de ambiente com API_MOCK=1 npm run serve.
 
-* A configuração da mock fica configurada no vue.config.js, onde existe um configurewebpack que constroi o path segundo a variável de ambiente que é passada.
+* A configuração da mock fica no vue.config.js, onde existe um configurewebpack que constroi o path segundo a variável de ambiente que é passada.
 
 ## Dicionário 
 
