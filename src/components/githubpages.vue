@@ -84,7 +84,7 @@ export default {
       return;
     },
     async marcelinho(item){
-      this.conteudoDoArquivo = await api.conteudoMarcelinho(item.download_url)
+      this.conteudoDoArquivo = await api.search_text(item.download_url)
       this.dialog = true
     },
   },

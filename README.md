@@ -17,7 +17,7 @@ Sem mock ->
 ```
 npm run serve
 ```
-Com mock, você deve setar a variável de ambiente. 
+Com mock, você deve setar a variável de ambiente. Os únicos usuário que existem para você brincar são: joao e jose
 ```
 API_MOCK = 1  npm run serve
 ```
