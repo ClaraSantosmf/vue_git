@@ -25,6 +25,8 @@ API_MOCK = 1  npm run serve
 
 MVP
 
+[Link do deploy](https://clarasantosmf.github.io/vue_git/)
+
 ![alter text](https://raw.githubusercontent.com/ClaraSantosmf/vue_git/main/src/img/mvp.png)
 
 ### Compiles and minifies for production
