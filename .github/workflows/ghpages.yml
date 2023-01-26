@@ -3,11 +3,12 @@
 # Creditos: Caio Peternela, aluno do buser tech (chupinhei daqui)
 # https://github.com/caiopeternela/pylifeandvuelife/blob/dev/.github/workflows/ci.yml
 
-name: publica no ghpages
+name: Automatic deploy
 on:
   push:
     branches:
       - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 19
-      - run: npm ci
+      - run: npm i
       - run: npm run build
       - uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
