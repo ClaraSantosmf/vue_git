@@ -6,19 +6,26 @@ A seguir algumas instruções de setup.
 Existem algumas anotações em tópicos do que eu não sabia e agora eu sei. Do que  sabia que havia esquecido. Logo, preciso anotar novamente para relembrar. 
 E detalhes que passaram a fazer sentido. 
 
-## Project setup
+### Como rodar o projeto.
+## 1º Project setup
+Na pasta do projeto, rode o seguinte comando primeiro para instalar nossas dependências.
 ```
 npm install
 ```
-### Compiles and hot-reloads for development
+### Como rodar o projeto.
+Se você precisar rodar sem mock o comando a seguir serve.
 Sem mock -> 
 ```
 npm run serve
 ```
-Com mock -> 
+Com mock você deve setar a variável de ambiente. 
 ```
 API_MOCK = 1  npm run serve
 ```
+
+MVP
+
+![alter text](https://raw.githubusercontent.com/ClaraSantosmf/vue_git/main/src/img/mvp.png)
 
 ### Compiles and minifies for production
 ```
@@ -55,7 +62,7 @@ module.exports = defineConfig({
 
 ### Deploy automático
 
-Para fazer um deploy automático inseri um arquivo sh ```deploy.sh``` que pode ser rodado pelo terminal. Ele vai levar as alterações para o github pages. roda um ``` bash deploy.sh```. 
+Para fazer um deploy automático inseri um arquivo sh ```deploy.sh``` que pode ser rodado pelo terminal. Porém, ainda estou melhorando ele. Ele vai levar as alterações para o github pages. roda um ``` bash deploy.sh```. 
 
 Para não ser necessário que seja feito isso na mão, melhor usar o arquivo yaml que aciona o Github Actions. 
 
@@ -123,6 +130,7 @@ Para esse caso foi escrito no methods uma função que agenda a execução do c�
 * [Apply(), this(), bind()](https://imasters.com.br/javascript/descomplicando-call-apply-e-bind-em-javascript)
 
 
-# bugs
+# To Do
 
-* Tem um problema nas issues. 
+* Melhorar a popup
+* Melhorar a mock
