@@ -27,7 +27,7 @@ export const api = {
     return data;
   },
   async listaIssues(owner, name, page) {
-    const url = `https://api.github.com/repos/${owner}/${name}/issues?page${page}`;
+    const url = `https://api.github.com/repos/${owner}/${name}/issues?page=${page}`;
     const response = await fetch(url);
     return await response.json();
   },
