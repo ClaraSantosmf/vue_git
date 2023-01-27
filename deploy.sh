@@ -20,6 +20,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git main
 
 
-git push -f git@github.com:ClaraSantosmf/saw.git master:gh-pages
+git push -f git@github.com:ClaraSantosmf/vue_git.git master:gh-pages
 
 cd -
