@@ -54,7 +54,7 @@ module.exports = defineConfig({
 
 ### Deploy automático
 
-Para fazer um deploy automático, eu inseri um arquivo sh ```deploy.sh``` que deve ser rodado pelo terminal. Porém, ainda estou melhorando ele. Ele vai levar as alterações para o github pages. 
+Para fazer um deploy automático, eu inseri um arquivo sh ```deploy.sh``` que deve ser rodado pelo terminal. Ele vai levar as alterações para o github pages. Porém como esse script leva até exatamente meu projeto, é possível que ao tentar isso a partir de um clone ou fork do meu projeto, você tome um erro de permissão. Então acionei o github CI.
 O comando para dar play é ``` bash deploy.sh```
 
 Para não ser necessário que seja feito isso na mão, melhor usar o arquivo yaml que aciona o Github Actions. 
