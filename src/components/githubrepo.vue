@@ -43,12 +43,14 @@ export default {
     usersearch: null,
     repo: null,
     repolist: [],
+    picture: null,
   }),
   methods: {
     procuraUsuarioGH: debouncerdecorator(async function () {
       this.userloading = true;
       const data = await api.search_users(this.usersearch);
       this.userlist = data.items;
+      this.picture = data.items[0].avatar_url
       this.userloading = false;
     }, 500),
     async listaRepositorios() {
@@ -56,7 +58,7 @@ export default {
       const data = await api.lista_repos(this.user)
       this.repolist = data
       this,this.repoloading = false
-    },
+    }
   },
   watch: {
     usersearch() {
@@ -70,6 +72,7 @@ export default {
     repo(){
         this.$emit('reposelected', this.repo)
         this.$emit('ownerselected', this.user)
+        this.$emit('pictureselected', this.picture)
     }
   },
 };

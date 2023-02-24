@@ -1,6 +1,6 @@
 <template>
   <div>
-    <githubrepo @reposelected="onRepoSelected" @ownerselected="onOwner"/>
+    <githubrepo @reposelected="onRepoSelected" @ownerselected="onOwner" @pictureselected="onPicture"/>
     <githubpages :repo="repo" :owner="owner"></githubpages>
     <githubissue :repo="repo"/>
   </div>  
@@ -22,7 +22,8 @@ export default {
 
     data: () => ({
       repo: null,
-      owner: null
+      owner: null,
+      picture: null
     }),
     methods:{
       onRepoSelected(repo){
@@ -30,6 +31,14 @@ export default {
       },
       onOwner(owner){
         this.owner = owner
+      },
+      onPicture(picture){
+        this.picture = picture
+      }
+    },
+    watch: {
+      picture(){
+        this.$emit('asFotosMenino', this.picture)
       }
     }
 }

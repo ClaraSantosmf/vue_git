@@ -9,19 +9,13 @@
         <v-avatar
           class="mr-10"
           color="grey darken-1"
-          size="32"
-        ></v-avatar>
+          size="40"
+        >
+        <img :src="this.picture">
+      </v-avatar>
 
         <v-spacer></v-spacer>
-
         <v-responsive max-width="260">
-          <v-text-field
-            dense
-            flat
-            hide-details
-            rounded
-            solo-inverted
-          ></v-text-field>
         </v-responsive>
       </v-container>
     </v-app-bar>
@@ -37,7 +31,7 @@
             <v-sheet
               min-height="70vh"
               rounded="lg">
-             <github></github>
+             <github @asFotosMenino="onPicture"></github>
             </v-sheet>
           </v-col>
         </v-row>
@@ -55,9 +49,13 @@ export default {
   components: {
     github
   },
-
   data: () => ({
-    //
+    picture: null
   }),
+  methods:{
+    onPicture(picture){
+      this.picture = picture
+    }
+  }
 };
 </script>
